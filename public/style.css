@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #7289da;
+  color: white;
+}
+
+.container {
+  margin-top: 20%;
+}
+
+.btn {
+  background: white;
+  color: #7289da;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+}
