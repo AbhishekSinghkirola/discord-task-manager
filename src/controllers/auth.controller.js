@@ -52,6 +52,42 @@ export const authorizeDiscord = asyncHandler(async (req, res) => {
   res.send(`<h1>Welcome, ${user.username}#${user.discriminator}</h1>`);
 });
 
+export const adminRegister = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const existingUser = await User.findOne({ email, role: "ADMIN" });
+
+  if (existingUser) {
+    throw new ApiError(409, "User already exists.");
+  }
+  const newUser = await User.create({
+    email,
+    password,
+    role: "ADMIN",
+  });
+
+  const accessToken = newUser.generateAccessToken();
+  const refreshToken = newUser.generateRefreshToken();
+  newUser.refreshToken = refreshToken;
+  await newUser.save();
+
+  res.cookie("accessToken", accessToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "Strict",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+
+  const data = {
+    accessToken,
+    refreshToken,
+  };
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Registration successful", data));
+});
+
 export const adminLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
