@@ -2,6 +2,7 @@ import express from "express";
 import {
   login,
   authorizeDiscord,
+  adminRegister,
   adminLogin,
   logout,
   refreshTokens,
@@ -16,6 +17,12 @@ const router = express.Router();
 router.get("/login", login);
 
 router.get("/discord-authorization", authorizeDiscord);
+
+router.post(
+  "/admin-register",
+  validate,
+  adminRegister
+);
 
 router.post("/admin-login", authValidationRules.login, validate, adminLogin);
 
