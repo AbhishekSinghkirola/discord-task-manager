@@ -65,3 +65,11 @@ export const createTeam = asyncHandler(async (req, res) => {
     throw error;
   }
 });
+
+export const getTeams = asyncHandler(async (req, res) => {
+  const teams = await Team.find();
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Teams fetched successfully.", teams));
+});
