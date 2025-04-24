@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/async-handler.js";
 import { ApiError } from "../utils/api-error.js";
 import { ApiResponse } from "../utils/api-response.js";
 import { Project } from "../models/Project.js";
+import { PROJECT_STATUS } from "../constants/project.constants.js";
 
 export const createProject = asyncHandler(async (req, res) => {
   const { name, description, deadline, teamMembersLimit } = req.body;
@@ -62,7 +63,7 @@ export const updateProject = asyncHandler(async (req, res) => {
   if (deadline) updateData.deadline = new Date(deadline);
   if (teamMembersLimit !== undefined)
     updateData.teamMembersLimit = teamMembersLimit;
-  if (status && ["ONGOING", "EXPIRED"].includes(status))
+  if (status && Object.values(PROJECT_STATUS).includes(status))
     updateData.status = status;
 
   // Update the project

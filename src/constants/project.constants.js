@@ -1,0 +1,9 @@
+export const PROJECT_STATUS = {
+  ONGOING: "ONGOING",
+  EXPIRED: "EXPIRED",
+};
+
+export const PROJECT_CONSTANTS = {
+  MIN_NAME_LENGTH: 3,
+  MIN_TEAM_MEMBERS: 1,
+};
