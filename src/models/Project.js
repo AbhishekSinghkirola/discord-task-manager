@@ -18,6 +18,11 @@ const projectSchema = new Schema(
     teamMembersLimit: {
       type: Number,
     },
+    status: {
+      type: String,
+      enum: ["ONGOING", "EXPIRED"],
+      default: "ONGOING",
+    },
   },
   {
     timestamps: true,
