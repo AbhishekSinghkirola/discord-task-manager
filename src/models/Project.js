@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { PROJECT_STATUS } from "../constants/project.constants.js";
 
 const projectSchema = new Schema(
   {
@@ -17,6 +18,11 @@ const projectSchema = new Schema(
     },
     teamMembersLimit: {
       type: Number,
+    },
+    status: {
+      type: String,
+      enum: Object.values(PROJECT_STATUS),
+      default: PROJECT_STATUS.ONGOING,
     },
   },
   {
