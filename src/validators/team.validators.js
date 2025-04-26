@@ -1,4 +1,6 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
+import mongoose from "mongoose";
+import { ApiError } from "../utils/api-error.js";
 
 export const teamValidationRules = {
   createTeam: [
@@ -30,5 +32,32 @@ export const teamValidationRules = {
       .withMessage("Team role color must be a string")
       .trim()
       .escape(),
+  ],
+
+  getTeamsById: [
+    param("teamId").custom((value) => {
+      if (!mongoose.isValidObjectId(value)) {
+        throw new ApiError(400, "Please enter valid teamId.");
+      }
+      return true;
+    }),
+  ],
+
+  getTeamsByProject: [
+    param("projectId").custom((value) => {
+      if (!mongoose.isValidObjectId(value)) {
+        throw new ApiError(400, "Please enter valid projectId.");
+      }
+      return true;
+    }),
+  ],
+
+  deleteTeam: [
+    param("teamId").custom((value) => {
+      if (!mongoose.isValidObjectId(value)) {
+        throw new ApiError(400, "Please enter valid teamId.");
+      }
+      return true;
+    }),
   ],
 };

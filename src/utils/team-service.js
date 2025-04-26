@@ -49,7 +49,12 @@ export const creatTeamOnDiscord = async ({
       categoryChannelId
     );
 
-    return true;
+    return {
+      roleId: newRole?.id,
+      categoryChannel: categoryChannelId,
+      textChannel: textChannel?.id,
+      voiceChannel: voiceChannel?.id,
+    };
   } catch (error) {
     if (newRole) {
       await deleteDiscordRole(newRole?.id);
@@ -67,6 +72,22 @@ export const creatTeamOnDiscord = async ({
       await deleteDiscordChannel(voiceChannel?.id);
     }
 
+    throw error;
+  }
+};
+
+export const deleteTeamOnDiscord = async ({
+  roleId,
+  textChannel,
+  voiceChannel,
+}) => {
+  try {
+    await deleteDiscordRole(roleId);
+
+    await deleteDiscordChannel(textChannel);
+
+    await deleteDiscordChannel(voiceChannel);
+  } catch (error) {
     throw error;
   }
 };
