@@ -1,10 +1,10 @@
 import { asyncHandler } from "../utils/async-handler.js";
 import { ApiError } from "../utils/api-error.js";
 import { ApiResponse } from "../utils/api-response.js";
-import { Team } from "../models/Team.js";
+import { Team } from "../models/Team.models.js";
 import { creatTeamOnDiscord } from "../utils/team-service.js";
 import mongoose from "mongoose";
-import { Project } from "../models/Project.js";
+import { Project } from "../models/Project.models.js";
 
 export const createTeam = asyncHandler(async (req, res) => {
   const session = await mongoose.startSession();
