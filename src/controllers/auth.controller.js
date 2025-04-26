@@ -2,7 +2,7 @@ import { asyncHandler } from "../utils/async-handler.js";
 import { ApiError } from "../utils/api-error.js";
 import { ApiResponse } from "../utils/api-response.js";
 import axios from "axios";
-import { User } from "../models/User.js";
+import { User } from "../models/User.models.js";
 
 export const login = asyncHandler(async (req, res) => {
   const redirectUri = encodeURIComponent(process.env.DISCORD_REDIRECT_URI);
