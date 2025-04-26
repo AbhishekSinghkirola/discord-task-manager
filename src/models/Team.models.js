@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-
+  
 const teamSchema = new Schema(
   {
     name: {
@@ -11,16 +11,29 @@ const teamSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Project",
       required: true,
-    },
+    }, 
     teamRole: {
       name: {
         type: String,
-        required: true,
       },
       color: {
         type: String,
       },
     },
+    discordDetails: {
+      roleId: {
+        type: String,
+      },
+      textChannel: {
+        type: String,
+      },
+      voiceChannel: {
+        type: String,
+      },
+      categoryChannel: {
+        type: String,
+      }
+    }
   },
   {
     timestamps: true,

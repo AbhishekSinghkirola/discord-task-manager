@@ -3,11 +3,6 @@ import { SWITCH_TEAM_REQUEST_STATUS } from "../constant.js";
 
 const switchTeamRequestSchema = new Schema(
   {
-    name: {
-      type: String,
-      trim: true,
-      required: true,
-    },
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",

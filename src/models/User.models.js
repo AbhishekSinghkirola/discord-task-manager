@@ -9,7 +9,7 @@ const userSchema = new Schema(
       type: String,
       trim: true,
     },
-    email: {
+    email: { 
       type: String,
       required: true,
       unique: true,
@@ -35,10 +35,6 @@ const userSchema = new Schema(
     },
     refreshToken: {
       type: String,
-    },
-    teamId: {
-      type: Schema.Types.ObjectId,
-      ref: "Team",
     },
   },
   {
