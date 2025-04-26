@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits, PermissionsBitField } from "discord.js";
 import dotenv from "dotenv";
 import logger from "./logger.js";
-import { DISCORD_CHANNEL_MAPPING, DISCORD_CHANNEL_TYPES } from "../constant.js";
+import { DISCORD_CHANNEL_MAPPING, DISCORD_CHANNEL_TYPES } from "../constants/project.constants.js"
 dotenv.config();
 
 const GUILD_ID = process.env.DISCORD_GUILD_ID;

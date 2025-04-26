@@ -1,13 +1,8 @@
 import mongoose, { Schema } from "mongoose";
-import { SWITCH_TEAM_REQUEST_STATUS } from "../constant.js";
+import { SWITCH_TEAM_REQUEST_STATUS } from "../constants/project.constants.js";
 
 const switchTeamRequestSchema = new Schema(
   {
-    name: {
-      type: String,
-      trim: true,
-      required: true,
-    },
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",

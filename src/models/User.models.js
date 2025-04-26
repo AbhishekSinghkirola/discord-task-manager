@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { LOGIN_TYPES, ROLES } from "../constant.js";
+import { LOGIN_TYPES, ROLES } from "../constants/project.constants.js";
 
 const userSchema = new Schema(
   {
@@ -9,7 +9,7 @@ const userSchema = new Schema(
       type: String,
       trim: true,
     },
-    email: {
+    email: { 
       type: String,
       required: true,
       unique: true,
@@ -35,10 +35,6 @@ const userSchema = new Schema(
     },
     refreshToken: {
       type: String,
-    },
-    teamId: {
-      type: Schema.Types.ObjectId,
-      ref: "Team",
     },
   },
   {
